@@ -8,7 +8,6 @@ import org.w3c.dom.DOMException;
 import by.training.gapeenko.task2.inteface.Attribute;
 import by.training.gapeenko.task2.inteface.Element;
 import by.training.gapeenko.task2.inteface.Node;
-import by.training.gapeenko.task2.inteface.NodeList;
 import by.training.gapeenko.task2.inteface.Text;
 
 public class ElementImpl implements Element{
@@ -105,7 +104,7 @@ public class ElementImpl implements Element{
 	}
 
 	@Override
-	public NodeList getElementsByTagName(String name) {
+	public List<Element> getElementsByTagName(String name) {
         List<Element> searchingElements = new ArrayList<>();
 
         for(Element element : childElements) {
@@ -116,6 +115,12 @@ public class ElementImpl implements Element{
         }
         return searchingElements;
 
+	}
+
+	@Override
+	public String getInnerText() {
+		// TODO Auto-generated method stub
+		return textContent.getWholeText();
 	}
 
 	public Text getTextContent() {
@@ -153,5 +158,13 @@ public class ElementImpl implements Element{
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
 	}
+
+	@Override
+	public String toString() {
+		return "ElementImpl [tagName=" + tagName + ", parentElement=" + parentElement + ", childElements="
+				+ childElements + ", attributes=" + attributes + ", textContent=" + textContent + "]";
+	}
+
+
 
 }
