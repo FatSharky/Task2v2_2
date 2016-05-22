@@ -10,13 +10,13 @@ import by.training.gapeenko.task2.inteface.Element;
 import by.training.gapeenko.task2.inteface.Node;
 import by.training.gapeenko.task2.inteface.Text;
 
-public class ElementImpl implements Element{
+public class ElementImpl implements Element {
 
-    private String tagName;
-    private Element parentElement;
-    private List<Element> childElements;
-    private List<Attribute> attributes;
-    private Text textContent;
+	private String tagName;
+	private Element parentElement;
+	private List<Element> childElements;
+	private List<Attribute> attributes;
+	private Text textContent;
 
 	@Override
 	public short getNodeType() {
@@ -63,63 +63,67 @@ public class ElementImpl implements Element{
 	@Override
 	public String getAttribute(String name) {
 		// TODO Auto-generated method stub
-        for(Attribute attribute : attributes){
-            if(attribute.getName().equals(name))
-                return attribute.getValue();
-        }
+		for (Attribute attribute : attributes) {
+			if (attribute.getName().equals(name))
+				return attribute.getValue();
+		}
 
-        return null;
+		return null;
 
 	}
 
 	@Override
 	public Attribute getAttributeNode(String name) {
 		// TODO Auto-generated method stub
-        for(Attribute attribute : attributes){
-            if(attribute.getName().equals(name))
-                return attribute;
-        }
+		for (Attribute attribute : attributes) {
+			if (attribute.getName().equals(name))
+				return attribute;
+		}
 
-        return null;
+		return null;
 
 	}
 
 	@Override
 	public void setAttribute(String name, String value) throws DOMException {
-        for(Attribute attribute : attributes){
-            if(attribute.getName().equals(name))
-                attribute.setValue(value);
-        }
+		for (Attribute attribute : attributes) {
+			if (attribute.getName().equals(name))
+				attribute.setValue(value);
+		}
 
 	}
 
 	@Override
 	public void removeAttribute(String name) throws DOMException {
 		// TODO Auto-generated method stub
-        for(Attribute attribute : attributes){
-            if(attribute.getName().equals(name))
-                attributes.remove(attribute);
-        }
+		for (Attribute attribute : attributes) {
+			if (attribute.getName().equals(name))
+				attributes.remove(attribute);
+		}
 
 	}
 
 	@Override
 	public List<Element> getElementsByTagName(String name) {
-        List<Element> searchingElements = new ArrayList<>();
+		List<Element> searchingElements = new ArrayList<>();
 
-        for(Element element : childElements) {
-            if (element.getTagName().equals(name))
-                searchingElements.add(element);
+		for (Element element : childElements) {
+			if (element.getTagName().equals(name))
+				searchingElements.add(element);
 
-            searchingElements.addAll(element.getElementsByTagName(name));
-        }
-        return searchingElements;
+			searchingElements.addAll(element.getElementsByTagName(name));
+		}
+		return searchingElements;
 
 	}
-    public void addChildElement(Element childElement) {
-        this.childElements.add(childElement);
-    }
 
+	public void addChildElement(Element childElement) {
+		this.childElements.add(childElement);
+	}
+
+	public void addAttribute(Attribute attribute) {
+		this.attributes.add(attribute);
+	}
 
 	@Override
 	public String getInnerText() {
@@ -168,7 +172,5 @@ public class ElementImpl implements Element{
 		return "ElementImpl [tagName=" + tagName + ", parentElement=" + parentElement + ", childElements="
 				+ childElements + ", attributes=" + attributes + ", textContent=" + textContent + "]";
 	}
-
-
 
 }
