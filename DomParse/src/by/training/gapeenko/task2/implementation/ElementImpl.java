@@ -116,6 +116,10 @@ public class ElementImpl implements Element{
         return searchingElements;
 
 	}
+    public void addChildElement(Element childElement) {
+        this.childElements.add(childElement);
+    }
+
 
 	@Override
 	public String getInnerText() {
