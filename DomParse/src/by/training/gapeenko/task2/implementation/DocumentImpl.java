@@ -8,6 +8,15 @@ import by.training.gapeenko.task2.inteface.Node;
 
 public class DocumentImpl implements Document{
 	private Element documentElement;
+
+    public DocumentImpl(){
+    }
+
+    public DocumentImpl(Element documentElement){
+        this.documentElement = documentElement;
+    }
+
+
 	@Override
 	public short getNodeType() {
 		// TODO Auto-generated method stub
@@ -29,13 +38,13 @@ public class DocumentImpl implements Document{
 	@Override
 	public Node getFirstChild() {
 		// TODO Auto-generated method stub
-		return documentElement;
+		return null;
 	}
 
 	@Override
 	public Node getLastChild() {
 		// TODO Auto-generated method stub
-		return documentElement;
+		return null;
 	}
 
 	@Override
