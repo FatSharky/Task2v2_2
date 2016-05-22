@@ -7,7 +7,7 @@ import by.training.gapeenko.task2.inteface.Element;
 import by.training.gapeenko.task2.inteface.Node;
 
 
-public class AttributeImpl implements Attribute{
+public class AttrubuteImpl implements Attribute{
 
     private Element ownerElement;
     private String name;
@@ -98,7 +98,7 @@ public class AttributeImpl implements Attribute{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AttributeImpl other = (AttributeImpl) obj;
+		AttrubuteImpl other = (AttrubuteImpl) obj;
 		if (name == null) {
 			if (other.name != null)
 				return false;

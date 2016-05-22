@@ -8,12 +8,6 @@ import by.training.gapeenko.task2.inteface.Text;
 public class TextImpl implements Text {
 	private String value;
 
-	public TextImpl() {
-	}
-
-	public TextImpl(String value) {
-		this.value = value;
-	}
 
 	@Override
 	public short getNodeType() {
@@ -57,7 +51,6 @@ public class TextImpl implements Text {
 		value = content;
 
 	}
-
 	public String getValue() {
 		return value;
 	}
@@ -71,4 +64,5 @@ public class TextImpl implements Text {
 		return "TextImpl [value=" + value + "]";
 	}
 
+	
 }
