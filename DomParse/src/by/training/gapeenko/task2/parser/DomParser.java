@@ -14,7 +14,7 @@ public class DomParser {
 	private FileReader fileReader;
 	private char currentSymbol;
 
-	private DocumentImpl documentImp;
+	private DocumentImpl documentImpl;
 
 	public DomParser() {
 	}
@@ -33,7 +33,7 @@ public class DomParser {
 			readTag(null);
 		}
 
-		return documentImp;
+		return documentImpl;
 	}
 
 	private void readTag(ElementImpl parentElement) {
@@ -79,7 +79,7 @@ public class DomParser {
 			if (parentElement != null)
 				parentElement.addChildElement(element);
 			else
-				documentImp = new DocumentImpl(element);
+				documentImpl = new DocumentImpl(element);
 		}
 		if (!closedTag && !singleTag && !declaration) {
 			readTag(element);

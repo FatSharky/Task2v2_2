@@ -6,12 +6,18 @@ import by.training.gapeenko.task2.inteface.Attribute;
 import by.training.gapeenko.task2.inteface.Element;
 import by.training.gapeenko.task2.inteface.Node;
 
+public class AttributeImpl implements Attribute {
 
-public class AttributeImpl implements Attribute{
+	private Element ownerElement;
+	private String name;
+	private String value;
 
-    private Element ownerElement;
-    private String name;
-    private String value;
+	public AttributeImpl() {
+	}
+
+	public AttributeImpl(String name, String value) {
+		this.name = name;
+	}
 
 	@Override
 	public short getNodeType() {
@@ -27,7 +33,7 @@ public class AttributeImpl implements Attribute{
 
 	@Override
 	public Node getParentNode() {
-		
+
 		return ownerElement;
 	}
 
@@ -64,7 +70,7 @@ public class AttributeImpl implements Attribute{
 	@Override
 	public void setValue(String value) throws DOMException {
 		this.value = value;
-		
+
 	}
 
 	@Override
@@ -122,5 +128,4 @@ public class AttributeImpl implements Attribute{
 		return "AttrubuteImpl [ownerElement=" + ownerElement + ", name=" + name + ", value=" + value + "]";
 	}
 
-	
 }
