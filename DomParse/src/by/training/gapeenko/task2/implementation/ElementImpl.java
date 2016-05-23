@@ -18,6 +18,20 @@ public class ElementImpl implements Element {
 	private List<Attribute> attributes;
 	private Text textContent;
 
+	public ElementImpl() {
+		childElements = new ArrayList<>();
+		attributes = new ArrayList<>();
+	}
+
+	public ElementImpl(String tagName, Text textContent, List<Attribute> attributes, List<Element> childElements,
+			Element parentElement) {
+		this.tagName = tagName;
+		this.textContent = textContent;
+		this.attributes = attributes;
+		this.childElements = childElements;
+		this.parentElement = parentElement;
+	}
+
 	@Override
 	public short getNodeType() {
 		// TODO Auto-generated method stub
