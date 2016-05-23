@@ -34,49 +34,41 @@ public class ElementImpl implements Element {
 
 	@Override
 	public short getNodeType() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 
 	@Override
 	public String getNodeValue() throws DOMException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Node getParentNode() {
-		// TODO Auto-generated method stub
 		return parentElement;
 	}
 
 	@Override
 	public Node getFirstChild() {
-		// TODO Auto-generated method stub
 		return childElements.get(0);
 	}
 
 	@Override
 	public Node getLastChild() {
-		// TODO Auto-generated method stub
 		return childElements.get(childElements.size() - 1);
 	}
 
 	@Override
 	public String getTagName() {
-		// TODO Auto-generated method stub
 		return tagName;
 	}
 
 	@Override
-	public boolean hasAttribute(String name) {
-		// TODO Auto-generated method stub
+	public boolean hasAttribute() {
 		return !attributes.isEmpty();
 	}
 
 	@Override
 	public String getAttribute(String name) {
-		// TODO Auto-generated method stub
 		for (Attribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				return attribute.getValue();
@@ -88,7 +80,6 @@ public class ElementImpl implements Element {
 
 	@Override
 	public Attribute getAttributeNode(String name) {
-		// TODO Auto-generated method stub
 		for (Attribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				return attribute;
@@ -109,7 +100,6 @@ public class ElementImpl implements Element {
 
 	@Override
 	public void removeAttribute(String name) throws DOMException {
-		// TODO Auto-generated method stub
 		for (Attribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				attributes.remove(attribute);
@@ -141,7 +131,6 @@ public class ElementImpl implements Element {
 
 	@Override
 	public String getInnerText() {
-		// TODO Auto-generated method stub
 		return textContent.getWholeText();
 	}
 
@@ -185,6 +174,43 @@ public class ElementImpl implements Element {
 	public String toString() {
 		return "ElementImpl [tagName=" + tagName + ", parentElement=" + parentElement + ", childElements="
 				+ childElements + ", attributes=" + attributes + ", textContent=" + textContent + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((childElements == null) ? 0 : childElements.hashCode());
+		result = prime * result + ((parentElement == null) ? 0 : parentElement.hashCode());
+		result = prime * result + ((textContent == null) ? 0 : textContent.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ElementImpl other = (ElementImpl) obj;
+		if (childElements == null) {
+			if (other.childElements != null)
+				return false;
+		} else if (!childElements.equals(other.childElements))
+			return false;
+		if (parentElement == null) {
+			if (other.parentElement != null)
+				return false;
+		} else if (!parentElement.equals(other.parentElement))
+			return false;
+		if (textContent == null) {
+			if (other.textContent != null)
+				return false;
+		} else if (!textContent.equals(other.textContent))
+			return false;
+		return true;
 	}
 
 }

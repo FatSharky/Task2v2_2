@@ -21,49 +21,41 @@ public class AttributeImpl implements Attribute {
 
 	@Override
 	public short getNodeType() {
-		// TODO Auto-generated method stub
 		return 2;
 	}
 
 	@Override
 	public String getNodeValue() throws DOMException {
-		// TODO Auto-generated method stub
 		return value;
 	}
 
 	@Override
 	public Node getParentNode() {
-
 		return ownerElement;
 	}
 
 	@Override
 	public Node getFirstChild() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Node getLastChild() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
 	@Override
 	public Element getOwnerElement() {
-		// TODO Auto-generated method stub
 		return ownerElement;
 	}
 
 	@Override
 	public String getValue() {
-		// TODO Auto-generated method stub
 		return value;
 	}
 
@@ -91,7 +83,6 @@ public class AttributeImpl implements Attribute {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((ownerElement == null) ? 0 : ownerElement.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
@@ -110,11 +101,6 @@ public class AttributeImpl implements Attribute {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (ownerElement == null) {
-			if (other.ownerElement != null)
-				return false;
-		} else if (!ownerElement.equals(other.ownerElement))
-			return false;
 		if (value == null) {
 			if (other.value != null)
 				return false;
@@ -122,10 +108,6 @@ public class AttributeImpl implements Attribute {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "AttrubuteImpl [ownerElement=" + ownerElement + ", name=" + name + ", value=" + value + "]";
-	}
+	
 
 }

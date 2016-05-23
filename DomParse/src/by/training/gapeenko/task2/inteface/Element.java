@@ -7,7 +7,7 @@ import org.w3c.dom.DOMException;
 public interface Element extends Node {
 	public String getTagName();
 
-	public boolean hasAttribute(String name);
+	public boolean hasAttribute();
 
 	public String getAttribute(String name);
 

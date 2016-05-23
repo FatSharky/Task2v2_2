@@ -19,43 +19,36 @@ public class DocumentImpl implements Document{
 
 	@Override
 	public short getNodeType() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public String getNodeValue() throws DOMException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Node getParentNode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Node getFirstChild() {
-		// TODO Auto-generated method stub
-		return null;
+		return documentElement;
 	}
 
 	@Override
 	public Node getLastChild() {
-		// TODO Auto-generated method stub
-		return null;
+		return documentElement;
 	}
 
 	@Override
 	public Element createElement(String tagName) throws DOMException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Element getDocumentElement() {
-		// TODO Auto-generated method stub
 		return documentElement;
 	}
 
