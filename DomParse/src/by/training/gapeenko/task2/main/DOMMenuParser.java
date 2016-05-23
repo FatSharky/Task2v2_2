@@ -1,3 +1,4 @@
+package by.training.gapeenko.task2.main;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import by.training.gapeenko.task2.parser.DomParser;
 
 public class DOMMenuParser {
 	
-	    private static final String xmlFileURI = "E:\\epam\\Task2v2_2\\DomParse\\Menu.xml";
+	    private static final String xmlFileURI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\gapeenko\\task2\\parser\\Menu.xml";
 
 	    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
