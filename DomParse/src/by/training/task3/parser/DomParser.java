@@ -1,4 +1,4 @@
-package by.training.gapeenko.task2.parser;
+package by.training.task3.parser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -8,13 +8,13 @@ import by.training.task3.domains.impl.Attribute;
 import by.training.task3.domains.impl.Document;
 import by.training.task3.domains.impl.Element;
 import by.training.task3.domains.impl.Text;
+import by.training.task3.domains.intefrace.Ivariables;
 
-public class DomParser {
+public class DomParser implements Ivariables {
 
 	private FileReader fileReader;
 	private char currentSymbol;
-
-	private Document documentImpl;
+	private Document document;
 
 	public DomParser() {
 	}
@@ -33,76 +33,7 @@ public class DomParser {
 			readTag(null);
 		}
 
-		return documentImpl;
-	}
-
-	private void readTag(Element parentElement) {
-		Element element = new Element();
-		boolean closedTag = false;
-		boolean singleTag = false;
-		boolean declaration = false;
-		StringBuilder tagName = new StringBuilder();
-		StringBuilder textBetweenTags = new StringBuilder();
-
-		while (currentSymbol != '<' && currentSymbol != 0)
-			textBetweenTags.append(readSymbol());
-		if (currentSymbol == 0)
-			return;
-
-		while (readSymbol() != '>') {
-			if (currentSymbol == '/') {
-				if (tagName.length() == 0)
-					closedTag = true;
-				else
-					singleTag = true;
-				break;
-			}
-			if (currentSymbol == ' ')
-				readAttribute(element);
-			else
-				tagName.append(currentSymbol);
-		}
-
-		if (parentElement != null) {
-			textBetweenTags.deleteCharAt(textBetweenTags.length() - 1);
-			parentElement.setTextContent(new Text(textBetweenTags.toString()));
-		}
-
-		element.setTagName(tagName.toString());
-
-		if (tagName.length() != 0)
-			if (tagName.charAt(0) == '?' && tagName.charAt(tagName.length() - 1) == '?')
-				declaration = true;
-
-		if (!closedTag && !declaration) {
-			element.setParentElement(parentElement);
-			if (parentElement != null)
-				parentElement.addChildElement(element);
-			else
-				documentImpl = new Document(element);
-		}
-		if (!closedTag && !singleTag && !declaration) {
-			readTag(element);
-		} else if (!closedTag)
-			readTag(parentElement);
-		else
-			readTag((Element) parentElement.getParentElement());
-	}
-
-	private void readAttribute(Element element) {
-		Attribute attribute = new Attribute();
-		StringBuilder attributeName = new StringBuilder();
-		StringBuilder attributeValue = new StringBuilder();
-
-		while (readSymbol() != '=')
-			attributeName.append(currentSymbol);
-		readSymbol();
-		while (readSymbol() != '"')
-			attributeValue.append(currentSymbol);
-
-		attribute.setName(attributeName.toString());
-		attribute.setValue(attributeValue.toString());
-		element.addAttribute(attribute);
+		return document;
 	}
 
 	private char readSymbol() {
@@ -119,6 +50,89 @@ public class DomParser {
 			currentSymbol = 0;
 
 		return currentSymbol;
+	}
+
+	private void readTag(Element parentElement) {
+		Element element = new Element();
+		boolean closedTag = false;
+		boolean singleTag = false;
+		boolean declaration = false;
+
+		StringBuilder tagName = new StringBuilder();
+
+		String textBetweenTags = readText();
+		if (currentSymbol == 0)
+			return;
+		while (readSymbol() != END_TAG) {
+
+			if (currentSymbol == CLOSE_TAG) {
+				if (tagName.length() == 0)
+					closedTag = true;
+				else
+					singleTag = true;
+				break;
+			}
+			if (currentSymbol == SPACE)
+				readAttribute(element);
+			else
+				tagName.append(currentSymbol);
+		}
+		if (tagName.length() != 0)
+			if (tagName.charAt(0) == QUESTION && tagName.charAt(tagName.length() - 1) == QUESTION)
+				declaration = true;
+
+		if (closedTag) {
+			parentElement.setTextContent(new Text(textBetweenTags.toString()));
+		}
+
+		if (!closedTag && !declaration) {
+			element.setTagName(tagName.toString());
+			element.setParentElement(parentElement);
+			if (parentElement != null)
+				parentElement.addChildElement(element);
+			else
+				document = new Document(element);
+		}
+
+		if (!closedTag && !singleTag && !declaration) {
+			readTag(element);
+		}
+
+		else if (!closedTag)
+			readTag(parentElement);
+		else
+			readTag((Element) parentElement.getParentElement());
+
+	}
+
+	private String readText() {
+		StringBuilder textBetweenTags = new StringBuilder();
+
+		while (currentSymbol != START_TAG && currentSymbol != 0)
+			textBetweenTags.append(readSymbol());
+
+		if (textBetweenTags.length() != 0)
+			textBetweenTags.deleteCharAt(textBetweenTags.length() - 1);
+
+		return textBetweenTags.toString();
+	}
+
+	private void readAttribute(Element element) {
+		Attribute attribute = new Attribute();
+		StringBuilder attributeName = new StringBuilder();
+		StringBuilder attributeValue = new StringBuilder();
+
+		while (readSymbol() != EQUALLY)
+			attributeName.append(currentSymbol);
+
+		readSymbol();
+
+		while (readSymbol() != QUOTES)
+			attributeValue.append(currentSymbol);
+
+		attribute.setName(attributeName.toString());
+		attribute.setValue(attributeValue.toString());
+		element.addAttribute(attribute);
 	}
 
 }

@@ -7,10 +7,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import by.training.gapeenko.task2.list.Menu;
-import by.training.gapeenko.task2.parser.DomParser;
 import by.training.task3.domains.Food;
 import by.training.task3.domains.intefrace.IDocument;
 import by.training.task3.domains.intefrace.IElement;
+import by.training.task3.parser.DomParser;
 
 
 
@@ -19,7 +19,7 @@ import by.training.task3.domains.intefrace.IElement;
 
 public class DOMMenuParser {
 	
-	    private static final String xmlFileURI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\gapeenko\\task2\\parser\\Menu.xml";
+	    private static final String xmlFileURI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\gapeenko\\task2\\xml\\Menu.xml";
 
 	    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
