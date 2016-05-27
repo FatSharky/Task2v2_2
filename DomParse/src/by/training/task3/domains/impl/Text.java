@@ -5,19 +5,26 @@ import org.w3c.dom.DOMException;
 import by.training.task3.domains.intefrace.INode;
 import by.training.task3.domains.intefrace.IText;
 
-public class TextImpl implements IText {
+public class Text implements IText {
 	private String value;
 
-	public TextImpl() {
+	public Text() {
 	}
 
-	public TextImpl(String value) {
+	public Text(String value) {
 		this.value = value;
 	}
 
 	@Override
-	public short getNodeType() {
-		return 3;
+	public String getWholeText() {
+		return value;
+	}
+
+	@Override
+	public void replaceWholeText(String content) {
+
+		value = content;
+
 	}
 
 	@Override
@@ -36,20 +43,13 @@ public class TextImpl implements IText {
 	}
 
 	@Override
+	public short getNodeType() {
+		return 3;
+	}
+
+	@Override
 	public INode getLastChild() {
 		return null;
-	}
-
-	@Override
-	public String getWholeText() {
-		return value;
-	}
-
-	@Override
-	public void replaceWholeText(String content) {
-
-		value = content;
-
 	}
 
 	public String getValue() {
@@ -60,7 +60,6 @@ public class TextImpl implements IText {
 		this.value = value;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,7 +76,7 @@ public class TextImpl implements IText {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TextImpl other = (TextImpl) obj;
+		Text other = (Text) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;
@@ -85,10 +84,7 @@ public class TextImpl implements IText {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "TextImpl [value=" + value + "]";
-	}
+	
+	
 
 }

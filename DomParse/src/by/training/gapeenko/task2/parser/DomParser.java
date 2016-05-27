@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import by.training.task3.domains.impl.AttributeImpl;
-import by.training.task3.domains.impl.DocumentImpl;
-import by.training.task3.domains.impl.ElementImpl;
-import by.training.task3.domains.impl.TextImpl;
+import by.training.task3.domains.impl.Attribute;
+import by.training.task3.domains.impl.Document;
+import by.training.task3.domains.impl.Element;
+import by.training.task3.domains.impl.Text;
 
 public class DomParser {
 
 	private FileReader fileReader;
 	private char currentSymbol;
 
-	private DocumentImpl documentImpl;
+	private Document documentImpl;
 
 	public DomParser() {
 	}
@@ -28,7 +28,7 @@ public class DomParser {
 		}
 	}
 
-	public DocumentImpl parse() {
+	public Document parse() {
 		while (readSymbol() != 0) {
 			readTag(null);
 		}
@@ -36,8 +36,8 @@ public class DomParser {
 		return documentImpl;
 	}
 
-	private void readTag(ElementImpl parentElement) {
-		ElementImpl element = new ElementImpl();
+	private void readTag(Element parentElement) {
+		Element element = new Element();
 		boolean closedTag = false;
 		boolean singleTag = false;
 		boolean declaration = false;
@@ -65,7 +65,7 @@ public class DomParser {
 
 		if (parentElement != null) {
 			textBetweenTags.deleteCharAt(textBetweenTags.length() - 1);
-			parentElement.setTextContent(new TextImpl(textBetweenTags.toString()));
+			parentElement.setTextContent(new Text(textBetweenTags.toString()));
 		}
 
 		element.setTagName(tagName.toString());
@@ -79,18 +79,18 @@ public class DomParser {
 			if (parentElement != null)
 				parentElement.addChildElement(element);
 			else
-				documentImpl = new DocumentImpl(element);
+				documentImpl = new Document(element);
 		}
 		if (!closedTag && !singleTag && !declaration) {
 			readTag(element);
 		} else if (!closedTag)
 			readTag(parentElement);
 		else
-			readTag((ElementImpl) parentElement.getParentElement());
+			readTag((Element) parentElement.getParentElement());
 	}
 
-	private void readAttribute(ElementImpl element) {
-		AttributeImpl attribute = new AttributeImpl();
+	private void readAttribute(Element element) {
+		Attribute attribute = new Attribute();
 		StringBuilder attributeName = new StringBuilder();
 		StringBuilder attributeValue = new StringBuilder();
 

@@ -10,7 +10,7 @@ import by.training.task3.domains.intefrace.IElement;
 import by.training.task3.domains.intefrace.INode;
 import by.training.task3.domains.intefrace.IText;
 
-public class ElementImpl implements IElement {
+public class Element implements IElement {
 
 	private String tagName;
 	private IElement parentElement;
@@ -18,33 +18,18 @@ public class ElementImpl implements IElement {
 	private List<IAttribute> attributes;
 	private IText textContent;
 
-	public ElementImpl() {
+	public Element() {
 		childElements = new ArrayList<>();
 		attributes = new ArrayList<>();
 	}
 
-	public ElementImpl(String tagName, IText textContent, List<IAttribute> attributes, List<IElement> childElements,
+	public Element(String tagName, IText textContent, List<IAttribute> attributes, List<IElement> childElements,
 			IElement parentElement) {
 		this.tagName = tagName;
 		this.textContent = textContent;
 		this.attributes = attributes;
 		this.childElements = childElements;
 		this.parentElement = parentElement;
-	}
-
-	@Override
-	public short getNodeType() {
-		return 1;
-	}
-
-	@Override
-	public String getNodeValue() throws DOMException {
-		return null;
-	}
-
-	@Override
-	public INode getParentNode() {
-		return parentElement;
 	}
 
 	@Override
@@ -121,12 +106,19 @@ public class ElementImpl implements IElement {
 
 	}
 
-	public void addChildElement(IElement childElement) {
-		this.childElements.add(childElement);
+	@Override
+	public INode getParentNode() {
+		return parentElement;
 	}
 
-	public void addAttribute(IAttribute attribute) {
-		this.attributes.add(attribute);
+	@Override
+	public short getNodeType() {
+		return 1;
+	}
+
+	@Override
+	public String getNodeValue() throws DOMException {
+		return null;
 	}
 
 	@Override
@@ -136,6 +128,14 @@ public class ElementImpl implements IElement {
 
 	public IText getTextContent() {
 		return textContent;
+	}
+
+	public void addChildElement(IElement childElement) {
+		this.childElements.add(childElement);
+	}
+
+	public void addAttribute(IAttribute attribute) {
+		this.attributes.add(attribute);
 	}
 
 	public void setTextContent(IText textContent) {
@@ -171,17 +171,13 @@ public class ElementImpl implements IElement {
 	}
 
 	@Override
-	public String toString() {
-		return "ElementImpl [tagName=" + tagName + ", parentElement=" + parentElement + ", childElements="
-				+ childElements + ", attributes=" + attributes + ", textContent=" + textContent + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
 		result = prime * result + ((childElements == null) ? 0 : childElements.hashCode());
 		result = prime * result + ((parentElement == null) ? 0 : parentElement.hashCode());
+		result = prime * result + ((tagName == null) ? 0 : tagName.hashCode());
 		result = prime * result + ((textContent == null) ? 0 : textContent.hashCode());
 		return result;
 	}
@@ -194,7 +190,12 @@ public class ElementImpl implements IElement {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ElementImpl other = (ElementImpl) obj;
+		Element other = (Element) obj;
+		if (attributes == null) {
+			if (other.attributes != null)
+				return false;
+		} else if (!attributes.equals(other.attributes))
+			return false;
 		if (childElements == null) {
 			if (other.childElements != null)
 				return false;
@@ -205,6 +206,11 @@ public class ElementImpl implements IElement {
 				return false;
 		} else if (!parentElement.equals(other.parentElement))
 			return false;
+		if (tagName == null) {
+			if (other.tagName != null)
+				return false;
+		} else if (!tagName.equals(other.tagName))
+			return false;
 		if (textContent == null) {
 			if (other.textContent != null)
 				return false;
@@ -212,5 +218,6 @@ public class ElementImpl implements IElement {
 			return false;
 		return true;
 	}
+	
 
 }
