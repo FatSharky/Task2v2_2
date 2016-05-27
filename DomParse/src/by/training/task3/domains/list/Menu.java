@@ -1,4 +1,4 @@
-package by.training.gapeenko.task2.list;
+package by.training.task3.domains.list;
 
 import java.util.ArrayList;
 import java.util.List;

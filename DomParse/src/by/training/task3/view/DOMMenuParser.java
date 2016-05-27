@@ -1,4 +1,4 @@
-package by.training.gapeenko.task2.main;
+package by.training.task3.view;
 import java.io.IOException;
 import java.util.List;
 
@@ -6,10 +6,10 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
-import by.training.gapeenko.task2.list.Menu;
 import by.training.task3.domains.Food;
 import by.training.task3.domains.intefrace.IDocument;
 import by.training.task3.domains.intefrace.IElement;
+import by.training.task3.domains.list.Menu;
 import by.training.task3.parser.DomParser;
 
 
