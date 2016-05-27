@@ -6,11 +6,11 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
-import by.training.gapeenko.task2.entity.Food;
-import by.training.gapeenko.task2.inteface.Document;
-import by.training.gapeenko.task2.inteface.Element;
 import by.training.gapeenko.task2.list.Menu;
 import by.training.gapeenko.task2.parser.DomParser;
+import by.training.task3.domains.Food;
+import by.training.task3.domains.intefrace.IDocument;
+import by.training.task3.domains.intefrace.IElement;
 
 
 
@@ -26,12 +26,12 @@ public class DOMMenuParser {
 	        Menu menu = new Menu();
 
 	       DomParser myParser = new DomParser(xmlFileURI);
-	        Document document = myParser.parse();
-	        Element menuElement = document.getDocumentElement();
+	        IDocument document = myParser.parse();
+	        IElement menuElement = document.getDocumentElement();
 
-	            List<Element> element = menuElement.getElementsByTagName("food");
+	            List<IElement> element = menuElement.getElementsByTagName("food");
 	            Food food = null;
-	            for(Element foodElement : element) {
+	            for(IElement foodElement : element) {
 	                food = new Food();
 	                food.setId(foodElement.getAttribute("ID"));
 	                food.setPhoto(foodElement.getElementsByTagName("type").get(0).getInnerText());

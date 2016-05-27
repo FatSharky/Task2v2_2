@@ -1,14 +1,14 @@
-package by.training.gapeenko.task2.implementation;
+package by.training.task3.domains.impl;
 
 import org.w3c.dom.DOMException;
 
-import by.training.gapeenko.task2.inteface.Attribute;
-import by.training.gapeenko.task2.inteface.Element;
-import by.training.gapeenko.task2.inteface.Node;
+import by.training.task3.domains.intefrace.IAttribute;
+import by.training.task3.domains.intefrace.IElement;
+import by.training.task3.domains.intefrace.INode;
 
-public class AttributeImpl implements Attribute {
+public class AttributeImpl implements IAttribute {
 
-	private Element ownerElement;
+	private IElement ownerElement;
 	private String name;
 	private String value;
 
@@ -30,17 +30,17 @@ public class AttributeImpl implements Attribute {
 	}
 
 	@Override
-	public Node getParentNode() {
+	public INode getParentNode() {
 		return ownerElement;
 	}
 
 	@Override
-	public Node getFirstChild() {
+	public INode getFirstChild() {
 		return null;
 	}
 
 	@Override
-	public Node getLastChild() {
+	public INode getLastChild() {
 		return null;
 	}
 
@@ -50,7 +50,7 @@ public class AttributeImpl implements Attribute {
 	}
 
 	@Override
-	public Element getOwnerElement() {
+	public IElement getOwnerElement() {
 		return ownerElement;
 	}
 
@@ -74,7 +74,7 @@ public class AttributeImpl implements Attribute {
 		this.name = name;
 	}
 
-	public void setOwnerElement(Element ownerElement) {
+	public void setOwnerElement(IElement ownerElement) {
 		this.ownerElement = ownerElement;
 	}
 

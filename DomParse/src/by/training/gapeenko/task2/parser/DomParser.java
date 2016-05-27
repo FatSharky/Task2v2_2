@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import by.training.gapeenko.task2.implementation.AttributeImpl;
-import by.training.gapeenko.task2.implementation.DocumentImpl;
-import by.training.gapeenko.task2.implementation.ElementImpl;
-import by.training.gapeenko.task2.implementation.TextImpl;
+import by.training.task3.domains.impl.AttributeImpl;
+import by.training.task3.domains.impl.DocumentImpl;
+import by.training.task3.domains.impl.ElementImpl;
+import by.training.task3.domains.impl.TextImpl;
 
 public class DomParser {
 

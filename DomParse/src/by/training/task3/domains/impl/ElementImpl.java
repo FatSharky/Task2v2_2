@@ -1,30 +1,30 @@
-package by.training.gapeenko.task2.implementation;
+package by.training.task3.domains.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.w3c.dom.DOMException;
 
-import by.training.gapeenko.task2.inteface.Attribute;
-import by.training.gapeenko.task2.inteface.Element;
-import by.training.gapeenko.task2.inteface.Node;
-import by.training.gapeenko.task2.inteface.Text;
+import by.training.task3.domains.intefrace.IAttribute;
+import by.training.task3.domains.intefrace.IElement;
+import by.training.task3.domains.intefrace.INode;
+import by.training.task3.domains.intefrace.IText;
 
-public class ElementImpl implements Element {
+public class ElementImpl implements IElement {
 
 	private String tagName;
-	private Element parentElement;
-	private List<Element> childElements;
-	private List<Attribute> attributes;
-	private Text textContent;
+	private IElement parentElement;
+	private List<IElement> childElements;
+	private List<IAttribute> attributes;
+	private IText textContent;
 
 	public ElementImpl() {
 		childElements = new ArrayList<>();
 		attributes = new ArrayList<>();
 	}
 
-	public ElementImpl(String tagName, Text textContent, List<Attribute> attributes, List<Element> childElements,
-			Element parentElement) {
+	public ElementImpl(String tagName, IText textContent, List<IAttribute> attributes, List<IElement> childElements,
+			IElement parentElement) {
 		this.tagName = tagName;
 		this.textContent = textContent;
 		this.attributes = attributes;
@@ -43,17 +43,17 @@ public class ElementImpl implements Element {
 	}
 
 	@Override
-	public Node getParentNode() {
+	public INode getParentNode() {
 		return parentElement;
 	}
 
 	@Override
-	public Node getFirstChild() {
+	public INode getFirstChild() {
 		return childElements.get(0);
 	}
 
 	@Override
-	public Node getLastChild() {
+	public INode getLastChild() {
 		return childElements.get(childElements.size() - 1);
 	}
 
@@ -69,7 +69,7 @@ public class ElementImpl implements Element {
 
 	@Override
 	public String getAttribute(String name) {
-		for (Attribute attribute : attributes) {
+		for (IAttribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				return attribute.getValue();
 		}
@@ -79,8 +79,8 @@ public class ElementImpl implements Element {
 	}
 
 	@Override
-	public Attribute getAttributeNode(String name) {
-		for (Attribute attribute : attributes) {
+	public IAttribute getAttributeNode(String name) {
+		for (IAttribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				return attribute;
 		}
@@ -91,7 +91,7 @@ public class ElementImpl implements Element {
 
 	@Override
 	public void setAttribute(String name, String value) throws DOMException {
-		for (Attribute attribute : attributes) {
+		for (IAttribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				attribute.setValue(value);
 		}
@@ -100,7 +100,7 @@ public class ElementImpl implements Element {
 
 	@Override
 	public void removeAttribute(String name) throws DOMException {
-		for (Attribute attribute : attributes) {
+		for (IAttribute attribute : attributes) {
 			if (attribute.getName().equals(name))
 				attributes.remove(attribute);
 		}
@@ -108,10 +108,10 @@ public class ElementImpl implements Element {
 	}
 
 	@Override
-	public List<Element> getElementsByTagName(String name) {
-		List<Element> searchingElements = new ArrayList<>();
+	public List<IElement> getElementsByTagName(String name) {
+		List<IElement> searchingElements = new ArrayList<>();
 
-		for (Element element : childElements) {
+		for (IElement element : childElements) {
 			if (element.getTagName().equals(name))
 				searchingElements.add(element);
 
@@ -121,11 +121,11 @@ public class ElementImpl implements Element {
 
 	}
 
-	public void addChildElement(Element childElement) {
+	public void addChildElement(IElement childElement) {
 		this.childElements.add(childElement);
 	}
 
-	public void addAttribute(Attribute attribute) {
+	public void addAttribute(IAttribute attribute) {
 		this.attributes.add(attribute);
 	}
 
@@ -134,35 +134,35 @@ public class ElementImpl implements Element {
 		return textContent.getWholeText();
 	}
 
-	public Text getTextContent() {
+	public IText getTextContent() {
 		return textContent;
 	}
 
-	public void setTextContent(Text textContent) {
+	public void setTextContent(IText textContent) {
 		this.textContent = textContent;
 	}
 
-	public List<Attribute> getAttributes() {
+	public List<IAttribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(List<Attribute> attributes) {
+	public void setAttributes(List<IAttribute> attributes) {
 		this.attributes = attributes;
 	}
 
-	public List<Element> getChildElements() {
+	public List<IElement> getChildElements() {
 		return childElements;
 	}
 
-	public void setChildElements(List<Element> childElements) {
+	public void setChildElements(List<IElement> childElements) {
 		this.childElements = childElements;
 	}
 
-	public Element getParentElement() {
+	public IElement getParentElement() {
 		return parentElement;
 	}
 
-	public void setParentElement(Element parentElement) {
+	public void setParentElement(IElement parentElement) {
 		this.parentElement = parentElement;
 	}
 

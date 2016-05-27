@@ -1,11 +1,11 @@
-package by.training.gapeenko.task2.implementation;
+package by.training.task3.domains.impl;
 
 import org.w3c.dom.DOMException;
 
-import by.training.gapeenko.task2.inteface.Node;
-import by.training.gapeenko.task2.inteface.Text;
+import by.training.task3.domains.intefrace.INode;
+import by.training.task3.domains.intefrace.IText;
 
-public class TextImpl implements Text {
+public class TextImpl implements IText {
 	private String value;
 
 	public TextImpl() {
@@ -26,17 +26,17 @@ public class TextImpl implements Text {
 	}
 
 	@Override
-	public Node getParentNode() {
+	public INode getParentNode() {
 		return null;
 	}
 
 	@Override
-	public Node getFirstChild() {
+	public INode getFirstChild() {
 		return null;
 	}
 
 	@Override
-	public Node getLastChild() {
+	public INode getLastChild() {
 		return null;
 	}
 

@@ -1,4 +1,4 @@
-package by.training.gapeenko.task2.entity;
+package by.training.task3.domains;
 
 
 public class Food {
