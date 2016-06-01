@@ -11,7 +11,7 @@ public final class KindNames {
 	public static final String DESCRIPTION_TAG = "description";
 	public static final String PORTION_TAG = "portion";
 	public static final String PRICE_TAG = "price";
-	public static final String XML_FILE_URI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\task4\\source\\Menu.xml";
+	public static final String XML_FILE_URI = "E:\\epam\\Task2v2_2\\DomParse\\src\\source\\Menu.xml";
 
 
 }
