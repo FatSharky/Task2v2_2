@@ -6,20 +6,21 @@
 	<element name="menu">
 		<complexType>
 			<sequence>
-				<element name="food" type="tns:Food" minOccurs="1"
+				<element name="kind" type="tns:Kind" minOccurs="1"
 					maxOccurs="unbounded" />
 			</sequence>
 		</complexType>
 	</element>
-	<complexType name="Food">
-		<sequence minOccurs="1" maxOccurs="unbounded">
-			<element name="type" type="string" />
-			<element name="type-conent" type="tns:TypeContent" />
 
+	<complexType name="Kind">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<element name="kind-name" type="string" />
+			<element name="kind-content" type="tns:KindContent" />
 		</sequence>
-		<attribute name="ID" type="ID" use="required" />
+		<attribute name="id" type="ID" use="required" />
 	</complexType>
-	<complexType name="TypeContent">
+
+	<complexType name="KindContent">
 		<sequence>
 			<element name="dish" type="tns:Dish" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>

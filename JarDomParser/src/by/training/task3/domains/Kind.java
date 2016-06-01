@@ -1,20 +1,21 @@
 package by.training.task3.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Type {
+public class Kind {
 	private String name;
 	private List<Dish> dishes;
 
-	public Type() {
-		// TODO Auto-generated constructor stub
+	public Kind() {
+		dishes = new ArrayList<>();
 	}
 
-	public Type(String name) {
+	public Kind(String name) {
 		this.name = name;
 	}
 
-	public Type(String name, List<Dish> dishes) {
+	public Kind(String name, List<Dish> dishes) {
 		this.name = name;
 		this.dishes = dishes;
 	}
@@ -35,6 +36,10 @@ public class Type {
 		this.dishes = dishes;
 	}
 
+	public void addDish(Dish dish) {
+		this.dishes.add(dish);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,7 +57,7 @@ public class Type {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Type other = (Type) obj;
+		Kind other = (Kind) obj;
 		if (dishes == null) {
 			if (other.dishes != null)
 				return false;

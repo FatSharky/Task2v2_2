@@ -4,33 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-	private List<Type> types;
+	private List<Kind> kinds;
 
 	public Menu() {
-		types = new ArrayList<>();
+		setKinds(new ArrayList<>());
 	}
 
-	public Menu(List<Type> types) {
-		this.types = types;
+	public Menu(List<Kind> types) {
+		this.setKinds(types);
 	}
 
-	public List<Type> getTypes() {
-		return types;
+	public List<Kind> getKinds() {
+		return kinds;
 	}
 
-	public void setTypes(List<Type> types) {
-		this.types = types;
+	public void setKinds(List<Kind> kinds) {
+		this.kinds = kinds;
 	}
 
-	public void addKind(Type type) {
-		this.types.add(type);
+	public void addKind(Kind kind) {
+		this.kinds.add(kind);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((types == null) ? 0 : types.hashCode());
+		result = prime * result + ((kinds == null) ? 0 : kinds.hashCode());
 		return result;
 	}
 
@@ -43,13 +43,12 @@ public class Menu {
 		if (getClass() != obj.getClass())
 			return false;
 		Menu other = (Menu) obj;
-		if (types == null) {
-			if (other.types != null)
+		if (kinds == null) {
+			if (other.kinds != null)
 				return false;
-		} else if (!types.equals(other.types))
+		} else if (!kinds.equals(other.kinds))
 			return false;
 		return true;
 	}
-	
 
 }

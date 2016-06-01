@@ -8,6 +8,6 @@ public interface IVariables {
 	char SPACE = ' ';
 	char EQUALLY = '=';
 	char QUESTION = '?';
-	String XML_FILE_URI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\task3\\source\\Menu.xml";
+	String XML_FILE_URI = "E:\\epam\\Task2v2_2\\DomParse\\src\\by\\training\\task4\\source\\Menu.xml";
 
 }

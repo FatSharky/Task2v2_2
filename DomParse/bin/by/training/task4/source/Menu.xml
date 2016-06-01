@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu xmlns="http://www.example.org/MenuSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.example.org/MenuSchema MenuSchema.xsd">
-	<food ID="id_1">
-		<type>Холодные закуски</type>
-		<type-conent>
+	<kind id="id_1">
+		<kind-name>Холодные закуски</kind-name>
+		<kind-content>
 			<dish id="asorti">
 				<photo>photo</photo>
 				<name>Асорти рыбное</name>
@@ -32,13 +32,13 @@
 				<portion>150</portion>
 				<price>800000</price>
 			</dish>
-		</type-conent>
-	</food>
+		</kind-content>
+	</kind>
 
-	<food ID="id_2">
-		<type>Горячие закуски</type>
+	<kind id="id_2">
+		<kind-name>Горячие закуски</kind-name>
 
-		<type-conent>
+		<kind-content>
 			<dish id="zulien">
 				<photo>photo</photo>
 				<name>Жульен</name>
@@ -61,13 +61,13 @@
 				<portion>150</portion>
 				<price>540000</price>
 			</dish>
-		</type-conent>
+		</kind-content>
 
-	</food>
+	</kind>
 
-	<food ID="id_3">
-		<type>Завтраки</type>
-		<type-conent>
+	<kind id="id_3">
+		<kind-name>Завтраки</kind-name>
+		<kind-content>
 			<dish id="glaza">
 				<photo>photo</photo>
 				<name>Глазунья</name>
@@ -76,14 +76,14 @@
 				<price>220000</price>
 			</dish>
 			<dish id="omlet">
-				<photo>photo</photo>
-				<name>Омлет</name>
-				<description>Яйца,молоко,мука</description>
+	<photo>photo</photo>
+	<name>Омлет</name>
+	<description>Яйца,молоко,мука</description>
 				<portion>2шт.</portion>
 				<price>390000</price>
 			</dish>
-		</type-conent>
+		</kind-content>
 
-	</food>
+	</kind>
 
 </menu>
