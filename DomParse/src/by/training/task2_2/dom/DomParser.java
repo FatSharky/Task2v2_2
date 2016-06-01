@@ -8,8 +8,9 @@ import by.training.task2_2.domains.implement.Attribute;
 import by.training.task2_2.domains.implement.Document;
 import by.training.task2_2.domains.implement.Element;
 import by.training.task2_2.domains.implement.Text;
-import by.training.task2_2.domains.inter.IDocument;
-import by.training.task2_2.domains.inter.IDomParser;
+import by.training.task2_2.domains.interfaces.IDocument;
+import by.training.task2_2.domains.interfaces.IDomParser;
+import by.training.task2_2.domains.interfaces.IVariables;
 
 public class DomParser implements IDomParser {
 	private FileReader fileReader;

@@ -1,4 +1,4 @@
-package by.training.task4.main;
+package src.by.training.task2_2.main;
 
 import java.io.IOException;
 import java.util.List;

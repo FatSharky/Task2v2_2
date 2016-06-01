@@ -1,4 +1,4 @@
-package by.training.task4.main;
+package src.by.training.task2_2.main;
 
 public final class KindNames {
 	
