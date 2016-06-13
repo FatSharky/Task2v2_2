@@ -1,6 +1,7 @@
 package src.by.training.task2_2.main;
 
 public final class KindNames {
+	private KindNames(){}
 	
 	public static final String MENU_TAG = "menu";
 	public static final String KIND_TAG = "kind";
